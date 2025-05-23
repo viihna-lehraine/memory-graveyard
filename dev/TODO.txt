@@ -1,0 +1,3 @@
+1. Add service registration to app startup process.
+
+2. Create nesting directory for assets/, css/, js/, ts/, etc while leaving project-wide config files, dev/, etc. in root.

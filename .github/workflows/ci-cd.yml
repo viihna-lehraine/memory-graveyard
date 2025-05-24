@@ -73,5 +73,3 @@ jobs:
             **Commit:** ${{ github.sha }}
             **Triggered by:** ${{ github.actor }}
             **Run Details:** [View Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
-
-# https://discord.com/api/webhooks/1375767486984618065/DxoPlKfVAFAVwuPnndJWGi7z-NSVftANKBVLlpKOy8elu2YKqMSOlfLtMLLUWAtnZNH2

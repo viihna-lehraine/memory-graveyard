@@ -1,3 +1,38 @@
-1. Add service registration to app startup process.
+  IMMEDIATE
 
-2. Create nesting directory for assets/, css/, js/, ts/, etc while leaving project-wide config files, dev/, etc. in root.
+1. Add service registration to app startup process
+
+2. Add a Memory Counter
+
+3. Plan out dead memory handling
+
+4. "Bury" animation
+  - on submit, memory sinks or slides into graveyard list
+
+5. Background animation
+  - Subtle animated noise, drifting mist, or soft colors that shift as more memories fade.
+
+6. Implement a subtle tombstone for “dead” memories or a counter.
+
+# ===================================================================== #
+# ===================================================================== #
+
+  POLISH
+
+1. favicon
+2. title
+3. meta description4
+4. README.md
+
+# ===================================================================== #
+# ===================================================================== #
+
+  STRETCH GOALS
+
+1. Export/Import Memories (as JSON?)
+2. Settings
+  a. Decay timing
+3. Themes
+  a. Dark mode
+  b. Synthwave
+  c. Monochrome

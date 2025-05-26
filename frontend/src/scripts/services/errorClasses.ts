@@ -24,4 +24,4 @@ export interface ErrorClasses {
 
 export const errorClasses: ErrorClasses = {
   UserFacingError
-};
+} as const;

@@ -1,6 +1,6 @@
 // File: frontend/src/scripts/services/ErrorHandler.ts
 
-import { Data, ErrorHandlerServiceContract, ErrorHandlerOptions } from '../types/index.js';
+import { ErrorHandlerServiceContract, ErrorHandlerOptions } from '../types/index.js';
 import { errorClasses, ErrorClasses } from './errorClasses.js';
 import { Logger } from './Logger.js';
 
@@ -9,24 +9,22 @@ import { Logger } from './Logger.js';
 
 export class ErrorHandler implements ErrorHandlerServiceContract {
   static #instance: ErrorHandler | null = null;
-  #data: Data;
   #errorClasses: ErrorClasses = errorClasses;
   #logger: Logger;
 
-  private constructor(data: Data, logger: Logger) {
+  private constructor(logger: Logger) {
     try {
-      this.#data = data;
       this.#logger = logger;
     } catch (error) {
       throw new Error(`${error instanceof Error ? error.message : error}`);
     }
   }
 
-  static getInstance(data: Data, logger: Logger): ErrorHandler {
+  static getInstance(logger: Logger): ErrorHandler {
     try {
       if (!ErrorHandler.#instance) {
         console.debug(`No ErrorHandler instance exists yet. Creating new instance.`);
-        ErrorHandler.#instance = new ErrorHandler(data, logger);
+        ErrorHandler.#instance = new ErrorHandler(logger);
       }
 
       console.debug(`Returning ErrorHandler instance.`);

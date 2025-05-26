@@ -1,0 +1,1 @@
+function n(e,d,l){const{x:a,y:o,width:f,height:r,decay:i,previewText:t}=d;e.save(),e.globalAlpha=l.decay.getAlpha(i),e.fillStyle=l.decay.getColor(i),e.fillRect(a,o,f,r),e.fillStyle="#222222FF",e.font="bold 12px serif",e.fillText(t,a+4,o+r/2),e.restore()}const y={draw:n};export{y as graveFns};

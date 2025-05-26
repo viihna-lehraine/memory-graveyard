@@ -1,0 +1,39 @@
+/* File: frontend/src/styles/pages/graveyard.css */
+
+@import '../partials/variables.css';
+
+/* ------------------------------------ */
+
+#memory-container {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: var(--box-shadow-1);
+}
+
+#memory-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-sm);
+  width: 100%;
+  max-width: 300px;
+}
+
+#memory-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#memory-input {
+  width: 100%;
+  max-width: unset;
+  text-align: center;
+}

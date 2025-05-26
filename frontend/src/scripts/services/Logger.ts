@@ -1,6 +1,6 @@
 // File: frontend/src/scripts/core/services/LoggerService.ts
 
-import { CommonFunctionsGroup, LoggerServiceContract } from '../types/index.js';
+import { Helpers, LoggerServiceContract } from '../types/index.js';
 
 // ================================================== //
 // ================================================== //
@@ -8,19 +8,18 @@ import { CommonFunctionsGroup, LoggerServiceContract } from '../types/index.js';
 export class Logger implements LoggerServiceContract {
   static #instance: Logger | null = null;
 
-  private constructor(commonFns: CommonFunctionsGroup) {
+  private constructor(helpers: Helpers) {
     try {
-      const { core: coreFns } = commonFns;
-      coreFns.noop();
+      helpers.app.noop();
     } catch (error) {
       throw new Error(`constructor]: ${error instanceof Error ? error.message : error}`);
     }
   }
 
-  static getInstance(commonFns: CommonFunctionsGroup): Logger {
+  static getInstance(helpers: Helpers): Logger {
     try {
       if (!Logger.#instance) {
-        Logger.#instance = new Logger(commonFns);
+        Logger.#instance = new Logger(helpers);
 
         console.log(`No existing Logger instance found. Creating new instance.`);
       }

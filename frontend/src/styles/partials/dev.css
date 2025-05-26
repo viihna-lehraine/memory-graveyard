@@ -1,0 +1,18 @@
+/* File: frontend/src/styles/partials/dev.css */
+
+@import './variables.css';
+
+/* ---------------------------------- */
+
+#container {
+  border: var(--border-dev);
+}
+
+#header {
+  border: var(--border-dev);
+}
+
+#memory-container {
+  border: var(--border-dev);
+  background: var(--memory-container-color-dev);
+}

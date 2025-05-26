@@ -1,0 +1,10 @@
+/* File: frontend/src/styles/main.css */
+
+@import './partials/root.css';
+@import './partials/dev.css';
+@import './partials/global.css';
+@import './partials/components.css';
+@import './partials/variables.css';
+@import './pages/index.css';
+@import './pages/calculator.css';
+@import './pages/graveyard.css';

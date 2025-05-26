@@ -1,42 +1,66 @@
 // File: frontend/src/scripts/dom/events.ts
 
-import type { Data, DOMFns, MemoryEntry, MemoryFns } from '../types/index.js';
+import type { DOMFunctions, PlacedGrave } from '../types/index.js';
 
 // ================================================= //
 // ================================================= //
 
-function registerEventListeners(data: Data, memoryFns: MemoryFns): void {
-  const form = data.web.form;
-  const input = data.web.input;
-  const refreshInterval = data.app.refreshInterval;
+function updateGraveOverlaysAndTooltips(
+  canvas: HTMLCanvasElement,
+  placedGraves: PlacedGrave[]
+): void {
+  document.querySelectorAll('.grave-overlay, .grave-tooltip').forEach(el => el.remove());
 
-  form.addEventListener('submit', (e: Event) => {
-    e.preventDefault();
+  const canvasRect = canvas.getBoundingClientRect();
 
-    const text = input.value.trim();
-    if (!text) return;
+  for (const grave of placedGraves) {
+    // Overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'grave-overlay';
+    overlay.style.position = 'absolute';
+    overlay.style.left = `${canvasRect.left + grave.x}px`;
+    overlay.style.top = `${canvasRect.top + grave.y}px`;
+    overlay.style.width = `${grave.width}px`;
+    overlay.style.height = `${grave.height}px`;
+    overlay.style.cursor = 'pointer';
+    overlay.style.background = 'rgba(0,0,0,0)'; // fully transparent, still receives events
+    overlay.style.zIndex = '1001';
+    overlay.style.pointerEvents = 'auto'; // important for receiving events!
 
-    const memory: MemoryEntry = {
-      id: crypto.randomUUID(),
-      text,
-      createdAt: Date.now()
-    };
-    const memories = memoryFns.load(data);
+    // tooltip (initially hidden)
+    const tooltip = document.createElement('div');
+    tooltip.className = 'grave-tooltip';
+    tooltip.style.position = 'absolute';
+    tooltip.style.left = `${canvasRect.left + grave.x}px`;
+    tooltip.style.top = `${canvasRect.top + grave.y - 32}px`; // Appears above grave
+    tooltip.style.minWidth = '120px';
+    tooltip.style.background = '#222';
+    tooltip.style.color = '#fff';
+    tooltip.style.padding = '6px 12px';
+    tooltip.style.borderRadius = '8px';
+    tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
+    tooltip.style.fontSize = '14px';
+    tooltip.style.pointerEvents = 'none';
+    tooltip.style.zIndex = '2000';
+    tooltip.style.display = 'none';
+    tooltip.textContent = grave.memory.text;
 
-    memories.unshift(memory); // add new memory to beginning of the array
-    memoryFns.save(memories, data);
+    // mouse events
+    overlay.addEventListener('mouseenter', () => {
+      tooltip.style.display = 'block';
+    });
+    overlay.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none';
+    });
 
-    input.value = '';
-    memoryFns.render(data);
-  });
-
-  window.addEventListener('DOMContentLoaded', () => memoryFns.render(data));
-
-  // refresh every 10 seconds
-  setInterval(() => memoryFns.render(data), refreshInterval ?? 10_000);
+    document.body.appendChild(overlay);
+    document.body.appendChild(tooltip);
+  }
 }
 
 // ================================================= //
 // ================================================= //
 
-export const eventFns: DOMFns['events'] = { register: registerEventListeners };
+export const eventFns: DOMFunctions['events'] = {
+  updateGraveOverlaysAndTooltips
+} as const;

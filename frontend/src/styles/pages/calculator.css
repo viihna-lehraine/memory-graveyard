@@ -1,0 +1,33 @@
+/* File: frontend/src/styles/pages/calculator.css */
+
+@import '../partials/variables.css';
+
+/* ------------------------------------ */
+
+#calculator-main-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#calculator-input-row {
+  margin-bottom: var(--gap-10);
+}
+
+#graphical-display {
+  width: 100%;
+  height: 100%;
+  border: var(--calculator-border-1);
+  background: var(--calculator-graphical-display-background);
+}
+
+#error-display {
+  color: var(--error-display-background);
+}

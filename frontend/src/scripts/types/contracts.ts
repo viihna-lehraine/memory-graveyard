@@ -1,6 +1,6 @@
 // File: frontend/src/scripts/types/contracts.ts
 
-import type { ErrorHandlerOptions } from './base.js';
+import type { ErrorHandlerOptions } from './app.js';
 
 // ================================================== //
 // ================================================== //

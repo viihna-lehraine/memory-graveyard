@@ -1,0 +1,1 @@
+import{_ as i}from"./index-r-m8xvJj.js";async function s(){console.log("[UTILITIES_FACTORY]: Creating 'Utilities' object.");const t={},[{decayUtilitiesFactory:e}]=await Promise.all([i(()=>import("./decay-D2w2gch1.js"),[],import.meta.url)]);return t.decay=e(),console.log("[UTILITIES_FACTORY]: 'Utilities' object has been successfully created."),t}export{s as utilitiesFactory};

@@ -1,0 +1,18 @@
+/* File: frontend/src/styles/pages/index.css */
+
+@import '../partials/variables.css';
+
+/* ------------------------------------ */
+
+#index-main-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}

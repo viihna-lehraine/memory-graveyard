@@ -1,14 +1,15 @@
-// File: frontend/src/scripts/data/app.ts
+// File: frontend/src/scripts/config/data/app.ts
 
-import { Data } from '../types/index.js';
+import { ConfigData } from '../../types/index.js';
 
 // ================================================= //
 // ================================================= //
 
-const refreshInterval = 10_000;
+const refreshInterval = 2_000;
+
 const STORAGE_KEY = 'memories';
 
 // ================================================= //
 // ================================================= //
 
-export const appData: Data['app'] = { refreshInterval, STORAGE_KEY } as const;
+export const appData: ConfigData['app'] = { refreshInterval, STORAGE_KEY } as const;
